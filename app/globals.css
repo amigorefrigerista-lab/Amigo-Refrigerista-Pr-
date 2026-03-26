@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@theme {
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+@layer base {
+  body {
+    @apply bg-[#0a0a0a] text-slate-100;
+  }
+}

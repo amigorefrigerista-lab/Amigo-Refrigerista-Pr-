@@ -1,0 +1,7 @@
+{
+  "name": "Amigo Refrigerista Pro",
+  "description": "Ferramenta de aministração para técnicos de Refrigeração e Climatização.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

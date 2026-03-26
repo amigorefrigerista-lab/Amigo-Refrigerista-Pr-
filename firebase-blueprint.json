@@ -1,0 +1,71 @@
+{
+  "entities": {
+    "Client": {
+      "title": "Client",
+      "description": "A client record",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "address": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" },
+        "history": { "type": "array" },
+        "equipment": { "type": "array" },
+        "notes": { "type": "array" }
+      },
+      "required": ["name", "address", "phone", "email", "lat", "lng", "history", "equipment", "notes"]
+    },
+    "AppNotification": {
+      "title": "AppNotification",
+      "description": "A notification for the user",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "type": { "type": "string" },
+        "date": { "type": "string" },
+        "read": { "type": "boolean" },
+        "clientId": { "type": "string" }
+      },
+      "required": ["title", "message", "type", "date", "read"]
+    },
+    "AppSettings": {
+      "title": "AppSettings",
+      "description": "User settings",
+      "type": "object",
+      "properties": {
+        "defaultMaintenanceInterval": { "type": "number" }
+      },
+      "required": ["defaultMaintenanceInterval"]
+    },
+    "User": {
+      "title": "User",
+      "description": "User profile and role",
+      "type": "object",
+      "properties": {
+        "role": { "type": "string", "enum": ["admin", "user"] }
+      },
+      "required": ["role"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profile"
+    },
+    "/users/{userId}/clients/{clientId}": {
+      "schema": { "$ref": "#/entities/Client" },
+      "description": "Clients belonging to a user"
+    },
+    "/users/{userId}/notifications/{notificationId}": {
+      "schema": { "$ref": "#/entities/AppNotification" },
+      "description": "Notifications belonging to a user"
+    },
+    "/users/{userId}/settings/{settingId}": {
+      "schema": { "$ref": "#/entities/AppSettings" },
+      "description": "Settings belonging to a user"
+    }
+  }
+}
